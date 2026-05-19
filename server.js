@@ -23,6 +23,7 @@ app.get('/api/health', async (req, res) => {
       database_time: result.rows[0].server_time,
       timestamp: new Date().toISOString()
     });
+    
   } catch (err) {
     console.error('Databas-fel:', err);
     res.status(500).json({
