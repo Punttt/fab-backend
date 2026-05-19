@@ -12,3 +12,5 @@ pool.on("error", (err) => {
     console.error("Oväntat fel inträffat: " + err);
     process.exit(-1)
 })
+
+module.exports = pool;
