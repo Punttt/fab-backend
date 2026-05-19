@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
-app.use(ecpress.json());
+app.use(express.json());
 
 // Startar servern
 app.listen(PORT, ()=> {
