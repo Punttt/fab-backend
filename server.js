@@ -7,10 +7,12 @@ const pool = require('./models/db');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Importerar routes
+const menuRoutes = require("./routes/menu")
+
 // Middleware
 app.use(cors());
 app.use(express.json());
-
 
 app.get('/api/health', async (req, res) => {
   try {
