@@ -58,7 +58,7 @@ const addMenuItem = async (req, res) => {
             });
         }
 
-        const newItem = await menuModel.createMenuItem("weekly_menu_id, day_of_week, dish");
+        const newItem = await menuModel.createMenuItem(weekly_menu_id, day_of_week, dish);
 
         res.status(201).json({
             message: "Rätt tillagd",
@@ -74,6 +74,24 @@ const addMenuItem = async (req, res) => {
 // Uppdaterar befintlig rätt
 const editMenuItem = async (req, res) => {
     try {
+        const { id } = req.params;
+        const { dish } = req.body;
+
+        if(!dish) {
+            return res.status(400).json({ error: "dish krävs" });
+        }
+
+        const updatedItem = await menuModel.updateMenuItem(id, dish);
+
+        // Om inget uppdaterades finns inte raden
+        if(!updatedItem) {
+            return res.status(404).json({ error: "Rätten hittades inte" })
+        }
+
+        res.status(200).json({
+            message: "Rätt uppdaterad",
+            item: updatedItem
+        });
 
     } catch (error) {
         console.error(error);
@@ -81,7 +99,7 @@ const editMenuItem = async (req, res) => {
     }
 }
 
-// Uppdaterar befintlig rätt
+// raderar befintlig rätt
 const deleteMenuItem = async (req, res) => {
     try {
 
