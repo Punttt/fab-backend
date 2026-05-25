@@ -82,12 +82,12 @@ const editMenuItem = async (req, res) => {
 }
 
 // Uppdaterar befintlig rätt
-const editMenuItem = async (req, res) => {
+const deleteMenuItem = async (req, res) => {
     try {
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Kunde inte uppdatera rätten" })
+        res.status(500).json({ error: "Kunde inte radera rätten" })
     }
 }
 
