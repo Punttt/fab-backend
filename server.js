@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 // Importerar routes
 const authRoutes = require("./routes/authRoutes");
+const menuRoutes = require("./routes/menuRoutes");
 
 // Middleware
 app.use(cors());
@@ -16,6 +17,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/menu", menuRoutes);
 
 app.get('/api/health', async (req, res) => {
   try {
