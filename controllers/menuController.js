@@ -22,7 +22,23 @@ const createMenu = async (req, res) => {
         }
 
         // Validerar för att kontrllera att veckan inte finns i db
-        const existing = await menuModel.findWeekMenu(week_number, year)
+        const existing = await menuModel.findWeekMenu(week_number, year);
+        if(existing) {
+            return res.status(409).json({
+                error: "Det finns redan en meny registrerad för denna vecka"
+            });
+        }
+
+        // User ID jw token
+        const createdBy = req.user.uderId;
+
+        // Skapa veckomenyn
+        const newMenu = await menuModel.createWeeklyMenu(weekNumber, year, createdBy);
+
+        res.status(201).json({
+            message: "Veckomeny skapad",
+            menu: newMenu
+        });
 
     } catch (error) {
         console.error(error);
