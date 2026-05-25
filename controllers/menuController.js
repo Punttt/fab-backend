@@ -45,3 +45,5 @@ const createMenu = async (req, res) => {
         res.status(500).json({ error: "Kunde inte skapa veckomeny" });
     }
 }
+
+module.exports = { createMenu };
