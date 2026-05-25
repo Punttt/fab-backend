@@ -33,7 +33,7 @@ const createMenu = async (req, res) => {
         const createdBy = req.user.uderId;
 
         // Skapa veckomenyn
-        const newMenu = await menuModel.createWeeklyMenu(weekNumber, year, createdBy);
+        const newMenu = await menuModel.createWeeklyMenu(week_number, year, createdBy);
 
         res.status(201).json({
             message: "Veckomeny skapad",
