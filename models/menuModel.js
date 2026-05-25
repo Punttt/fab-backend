@@ -61,5 +61,8 @@ async function deleteMenuItem(id) {
 
 module.exports = {
     createWeeklyMenu,
-    findWeekMenu
+    findWeekMenu,
+    createMenuItem,
+    updateMenuItem,
+    deleteMenuItem
 }
