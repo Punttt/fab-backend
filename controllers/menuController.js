@@ -95,17 +95,29 @@ const editMenuItem = async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Kunde inte uppdatera rätten" })
+        res.status(500).json({ error: "Kunde inte uppdatera rätten" });
     }
 }
 
 // raderar befintlig rätt
 const deleteMenuItem = async (req, res) => {
     try {
+        const { id } = req.params;
+
+        const deletedItem = await menuModel.deleteMenuItem(id);
+
+        if(!deletedItem) {
+            return res.status(404).json({ error: "Rätten hittades inte" });
+        }
+
+        res.status(200).json({
+            message: "Rätten raderad",
+            item: deletedItem
+        });
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Kunde inte radera rätten" })
+        res.status(500).json({ error: "Kunde inte radera rätten" });
     }
 }
 
