@@ -22,3 +22,8 @@ async function findWeekMenu(weekNumber, year) {
 
     return result.rows[0];
 }
+
+module.exports = {
+    createWeeklyMenu,
+    findWeekMenu
+}
