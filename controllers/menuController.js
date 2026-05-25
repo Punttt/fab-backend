@@ -46,4 +46,32 @@ const createMenu = async (req, res) => {
     }
 }
 
-module.exports = { createMenu };
+// Skapar / lägger till en rätt för en dag
+const addMenuItem = async (req, res) => {
+    try {
+        const { weekly_menu_id, day_of_week, dish } = req.body;
+
+        // Validering
+        if (!weekly_menu_id || !day_of_week || !dish) {
+            return res.status(400).json({
+                error: "weekly_menu_id, day_of_week och dish krävs"
+            });
+        }
+
+        const newItem = await menuModel.createMenuItem("weekly_menu_id, day_of_week, dish");
+
+        res.status(201).json({
+            message: "Rätt tillagd",
+            item: newItem
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Kunde inte lägga till rätten" })
+    }
+}
+
+module.exports = { 
+    createMenu,
+    addMenuItem
+ };
