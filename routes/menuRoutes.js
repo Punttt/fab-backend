@@ -5,7 +5,7 @@ const {
     createMenu,
     addMenuItem,
     editMenuItem,
-    deletedItem
+    deleteMenuItem
 } = require("../controllers/menuController");
 const authenticate = require("../middleware/authMiddleware");
 
@@ -15,6 +15,6 @@ router.post("/", authenticate, createMenu);
 // Menyrätter
 router.post("/item", authenticate, addMenuItem);
 router.put("/item/:id", authenticate, editMenuItem);
-router.delete("/item/:id", authenticate, deletedItem);
+router.delete("/item/:id", authenticate, deleteMenuItem);
 
 module.exports = router;

@@ -125,5 +125,5 @@ module.exports = {
     createMenu,
     addMenuItem,
     editMenuItem,
-    deletedItem
+    deleteMenuItem
  };
