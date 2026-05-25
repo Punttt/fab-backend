@@ -36,6 +36,29 @@ async function createMenuItem(weeklyMenuId, dayOfWeek, dish) {
     return result.rows[0];
 }
 
+// uppdatera en menyrätt
+async function updateMenuItem(id, dish) {
+    const result = await pool.query(
+        `UPDATE meny_items
+        SET dish = $1
+        WHERE id = $2
+        RETURNING *`,
+        [dish, id]
+    );
+    return result.rows[0];
+}
+
+// radera menyrätt
+async function deleteMenuItem(id) {
+    const result = await pool.query(
+        `DELETE FROM menu_items
+        WHERE id = $1
+        RETURNING *`,
+        [id]
+    );
+    return result.rows[0];
+}
+
 module.exports = {
     createWeeklyMenu,
     findWeekMenu
