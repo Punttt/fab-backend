@@ -71,6 +71,26 @@ const addMenuItem = async (req, res) => {
     }
 }
 
+// Uppdaterar befintlig rätt
+const editMenuItem = async (req, res) => {
+    try {
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Kunde inte uppdatera rätten" })
+    }
+}
+
+// Uppdaterar befintlig rätt
+const editMenuItem = async (req, res) => {
+    try {
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Kunde inte uppdatera rätten" })
+    }
+}
+
 module.exports = { 
     createMenu,
     addMenuItem
