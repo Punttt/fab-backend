@@ -123,5 +123,7 @@ const deleteMenuItem = async (req, res) => {
 
 module.exports = { 
     createMenu,
-    addMenuItem
+    addMenuItem,
+    editMenuItem,
+    deletedItem
  };
