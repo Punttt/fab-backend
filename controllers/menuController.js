@@ -53,7 +53,7 @@ const createMenu = async (req, res) => {
         }
 
         // User ID jw token
-        const createdBy = req.user.uderId;
+        const createdBy = req.user.userId;
 
         // Skapa veckomenyn
         const newMenu = await menuModel.createWeeklyMenu(week_number, year, createdBy);
