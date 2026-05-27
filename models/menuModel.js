@@ -24,6 +24,38 @@ async function findWeekMenu(weekNumber, year) {
     return result.rows[0];
 }
 
+// Hämtar en veckomeny med alla rätter för måndag - fredag.
+async function getWeeklyMenuItems(weekNumber, year) {
+    // Hämtar veckomenyn
+    const menuResult = await pool.query(
+        `SELECT * FROM weekly_menu WHERE week_number = $1 AND year = $2`,
+        [weekNumber, year]
+    );
+
+    const menu = menuResult.rows[0];
+
+    // validering om veckan inte finns, returnerar null
+    if(!menu) {
+        return null;
+    }
+
+    // Hämta alla rätter för den veckan
+    const itemsResult = await pool.query(
+        `SELECT id, day_of_week, dish
+        FROM menu_items
+        WHERE weekly_menu_id = $1`,
+        [menu.id]
+    );
+
+    // Sätter ihop till ett objekt
+    return {
+        id: menu.id,
+        week_number: menu.week_number,
+        year: menu.year,
+        items: itemsResult.rows
+    };
+}
+
 // DAILYRÄTT
 // Skapa en menyrätt för en specifik dag
 async function createMenuItem(weeklyMenuId, dayOfWeek, dish) {
