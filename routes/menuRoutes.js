@@ -14,7 +14,7 @@ const authenticate = require("../middleware/authMiddleware");
 router.post("/", authenticate, createMenu);
 
 // GET
-router.post("/:year/:week", getMenu)
+router.get("/:year/:week", getMenu);
 
 // Menyrätter
 router.post("/item", authenticate, addMenuItem);
