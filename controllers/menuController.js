@@ -2,6 +2,18 @@
 
 const menuModel = require("../models/menuModel");
 
+// Hämta en veckomeny med rätter
+const getMenu = async (req, res) => {
+    try {
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            error: "Kunde inte hämta veckomenyn"
+        });
+    }
+}
+
 // Skapar en ny veckomenu 
 const createMenu = async (req, res) => {
     try {
