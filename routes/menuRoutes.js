@@ -6,11 +6,13 @@ const {
     addMenuItem,
     editMenuItem,
     deleteMenuItem,
-    getMenu
+    getMenu,
+    getCurrentMenu
 } = require("../controllers/menuController");
 const authenticate = require("../middleware/authMiddleware");
 
 // GET
+router.get("/current", getCurrentMenu);
 router.get("/:year/:week", getMenu);
 
 // Menyrätter
