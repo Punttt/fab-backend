@@ -28,7 +28,7 @@ async function findWeekMenu(weekNumber, year) {
 async function getWeeklyMenuItems(weekNumber, year) {
     // Hämtar veckomenyn
     const menuResult = await pool.query(
-        `SELECT * FROM weekly_menu WHERE week_number = $1 AND year = $2`,
+        `SELECT * FROM weekly_menus WHERE week_number = $1 AND year = $2`,
         [weekNumber, year]
     );
 
