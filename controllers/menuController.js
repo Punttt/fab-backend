@@ -147,7 +147,7 @@ const deleteMenuItem = async (req, res) => {
 // Hämtar nuvarande veckas meny
 const getCurrentMenu = async (req, res) => {
     try {
-        const { week, year } = getCurrentWeekAndYear(week, year); 
+        const { week, year } = getCurrentWeekAndYear(); 
 
         const menu = await menuModel.getWeeklyMenuItems(week, year);
 
