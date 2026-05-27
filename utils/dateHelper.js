@@ -1,12 +1,12 @@
+// Använder biblotek för att räkna ut vecka och år korrekt.
+const { getISOWeek, getISOWeekYear } = require("date-fns");
 
 function getCurrentWeekAndYear() {
     const now = new Date();
 
-    let currentYear = now.getFullYear();
-
     return {
-        week: 23,
-        year: currentYear
+        week: getISOWeek(now),
+        year: getISOWeekYear(now)
     }
 }
 
