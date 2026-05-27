@@ -10,13 +10,11 @@ const {
 } = require("../controllers/menuController");
 const authenticate = require("../middleware/authMiddleware");
 
-// POST 
-router.post("/", authenticate, createMenu);
-
 // GET
 router.get("/:year/:week", getMenu);
 
 // Menyrätter
+router.post("/", authenticate, createMenu);
 router.post("/item", authenticate, addMenuItem);
 router.put("/item/:id", authenticate, editMenuItem);
 router.delete("/item/:id", authenticate, deleteMenuItem);
