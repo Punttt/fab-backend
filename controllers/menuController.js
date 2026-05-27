@@ -144,10 +144,34 @@ const deleteMenuItem = async (req, res) => {
     }
 }
 
+// Hämtar nuvarande veckas meny
+const getCurrentMenu = async (req, res) => {
+    try {
+        const { week, year } = getCurrentWeekAndYear(week, year); 
+
+        const menu = await menuModel.getWeeklyMenuItems(week, year);
+
+        if(!menu) {
+            return res.status(404).json({
+                error: "Ingen meny finns för denna vecka",
+                week: week,
+                year: year
+            });
+        }
+
+        res.status(200).json(menu);
+
+    } catch(error) {
+        console.error(error);
+        res.status(500).json({ error: "Kunde inte hämta veckans meny" });
+    }
+}
+
 module.exports = { 
     createMenu,
     addMenuItem,
     editMenuItem,
     deleteMenuItem,
-    getMenu
+    getMenu,
+    getCurrentMenu
  };
