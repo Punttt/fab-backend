@@ -148,5 +148,6 @@ module.exports = {
     createMenu,
     addMenuItem,
     editMenuItem,
-    deleteMenuItem
+    deleteMenuItem,
+    getMenu
  };
