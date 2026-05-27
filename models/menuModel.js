@@ -96,5 +96,6 @@ module.exports = {
     findWeekMenu,
     createMenuItem,
     updateMenuItem,
-    deleteMenuItem
+    deleteMenuItem,
+    getWeeklyMenuItems
 }
