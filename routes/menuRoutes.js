@@ -5,12 +5,16 @@ const {
     createMenu,
     addMenuItem,
     editMenuItem,
-    deleteMenuItem
+    deleteMenuItem,
+    getMenu
 } = require("../controllers/menuController");
 const authenticate = require("../middleware/authMiddleware");
 
 // POST 
 router.post("/", authenticate, createMenu);
+
+// GET
+router.post("/:year/:week", getMenu)
 
 // Menyrätter
 router.post("/item", authenticate, addMenuItem);
