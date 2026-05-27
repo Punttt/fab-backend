@@ -5,6 +5,17 @@ const menuModel = require("../models/menuModel");
 // Hämta en veckomeny med rätter
 const getMenu = async (req, res) => {
     try {
+        const { year, week } = req.params;
+
+        const menu = await menuModel.getWeeklyMenuItems(week, year);
+        
+        if(!menu) {
+            return res.status(404).json({
+                error: "Ingen meny hittades för denna vecka"
+            });
+        }
+
+        res.status(200).json(menu);
 
     } catch (error) {
         console.error(error);
